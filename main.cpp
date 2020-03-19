@@ -1,5 +1,6 @@
-#include <bits/stdc++.h>
+//Centroid Decomposition of a tree
 
+#include <bits/stdc++.h>
 
 #define FOR(i, a, b) for(int i = a; i<b; ++i)
 #define FR(i, a, b) for(int i = a; i>=b; --i)
