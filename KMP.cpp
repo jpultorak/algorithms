@@ -1,4 +1,5 @@
-//algorithm for calculating prefix array in O(n)
+//algorithm for searching pattern in text
+// complexity - O(|s| + |t|)
 
 #include <bits/stdc++.h>
 
@@ -19,11 +20,13 @@ typedef pair<int, int> iPair;
 const int MAX = 1e6+1;
 const int M = 1e9+7;
 
-int pi[MAX];
 
+//build the prefix-suffix array
+int pi[2*MAX];
 
-void pref(string s)
+void pref(string s, string t)
 {
+    s = s + '#' + t;
     int c = 0;
     pi[0] = 0;
 
@@ -40,8 +43,17 @@ void pref(string s)
 int main()
 {
     //_upgrade;
-    string s;
-    cin>>s;
-    pref(s);
+
+    // looking for s in t
+    string s, t;
+    cin>>s>>t;
+    int sn = s.size(), tn = t.size();
+    pref(s, t);
+
+    //print occurences of s in t
+    FOR(i, sn+1, tn + sn +1)
+        if(pi[i] == sn)
+           cout<<i-2*sn+1<<" ";
+
     return 0;
 }
